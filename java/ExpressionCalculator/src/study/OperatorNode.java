@@ -31,8 +31,19 @@ public class OperatorNode extends ExpressionNode {
     public int calc() {
         int leftValue = left.calc();
         int rightValue = right.calc();
-        // TODO: choose operation
-        return leftValue + rightValue;
+        switch (opCode) {
+            case "+":
+                return leftValue + rightValue;
+            case "-":
+                return leftValue - rightValue;
+            case "*":
+                return leftValue * rightValue;
+            case "/":
+                if (rightValue!=0)
+                    return leftValue / rightValue;
+            default:
+                return 0;
+        }
     }
     
 }
