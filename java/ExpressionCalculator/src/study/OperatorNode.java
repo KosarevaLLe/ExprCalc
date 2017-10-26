@@ -14,6 +14,14 @@ public class OperatorNode extends ExpressionNode {
         return right;
     }
 
+    public void setLeft(ExpressionNode left) {
+        this.left = left;
+    }
+    
+    public void setRight(ExpressionNode right) {
+        this.right = right;
+    }
+
     public String getOpCode() {
         return opCode;
     }
@@ -31,8 +39,13 @@ public class OperatorNode extends ExpressionNode {
     public int calc() {
         int leftValue = left.calc();
         int rightValue = right.calc();
-        // TODO: choose operation
-        return leftValue + rightValue;
+        switch (opCode.charAt(0)) {
+        case '+': return leftValue + rightValue;
+        case '-': return leftValue - rightValue;
+        case '*': return leftValue * rightValue;
+        case '/': return leftValue / rightValue;
+        }
+        return 0;
     }
-    
+
 }
